@@ -32,7 +32,7 @@ const formSchema = z.object({
   available_pickup_times: z.string().min(5, "Please provide pickup times"),
   pickup_address: z.string().min(5, "Please provide a valid pickup address"),
   special_instructions: z.string().optional(),
-  status: z.enum(["Available", "Partially Claimed", "Claimed"]),
+  // status: z.enum(["Available", "Partially Claimed", "Claimed"]),
 });
 
 export function FoodDonationForm() {
@@ -59,7 +59,7 @@ export function FoodDonationForm() {
         available_pickup_times: data.available_pickup_times,
         pickup_address: data.pickup_address,
         special_instructions: data.special_instructions,
-        status: data.status,
+        status: "Available", // data.status,
       });
       console.log("Response:", res.data);
       toast.success(
@@ -148,7 +148,7 @@ export function FoodDonationForm() {
             />
           </div>
 
-          <div className="space-y-2">
+          {/* <div className="space-y-2">
             <Label htmlFor="status">Status</Label>
             <Select defaultValue="Available" {...register("status")}>
               <SelectTrigger>
@@ -165,7 +165,7 @@ export function FoodDonationForm() {
             {errors.status && (
               <p className="text-red-500 text-sm">{errors.status.message}</p>
             )}
-          </div>
+          </div> */}
 
           <Button type="submit" className="w-full">
             Submit Donation
